@@ -24,6 +24,17 @@
         padding: 12px;
         transition: background-color .6s ease, transform .6s;
     }
+    #artwork{
+        display: inline-flex;
+        margin: 5px;
+        border: solid 4px black;
+        border-radius: 10px;
+        transition: opacity .6s ease, transform .6s;
+    }
+    #artwork:hover{
+			transform: scale(1.05);
+			opacity: 0.8;
+		}
     </style>
 </head>
 <body>
@@ -40,8 +51,13 @@ fetch("./jsons/Chill 2022.json")
   .then(() => console.log(obj.tracks[0].album.images[0].url))
   .then((html) => {
     $(document).ready(function(){
-	let elem = $("<img src=\"" + obj.tracks[0].album.images[1].url + "\">");
-	$("#container").append(elem);
+        
+    $.each(obj.tracks, function(key, val){
+        let elem = $("<img id=artwork src=\"" + val.album.images[1].url + "\">");
+        $("#container").append(elem);
+    })
+	// let elem = $("<img src=\"" + obj.tracks[0].album.images[1].url + "\">");
+	// $("#container").append(elem);
     })
 });
 
