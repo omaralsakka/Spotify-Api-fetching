@@ -88,5 +88,6 @@ var spotifyApi = new SpotifyWebApi({
     )
   );
 
-//first take the login link and access in the browser.
-//copy the access tokken from terminal
+//first take the login link and access in the browser. node index.js
+//copy the access tokken from terminal, paste the tokens in getMe at the right place.
+//run frontend.html into browser
