@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" 
+	integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" 
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+    <style>		
+    .li{
+        font-size: large;
+        font-family: 'Courier New', Courier, monospace; 
+        background-color: rgba(250, 235, 215, 0.87);
+        border: inset 2px rgba(202, 202, 202, 0.527);
+        border-radius: 10px;
+        box-shadow: 8px 8px 2px rgb(209, 209, 209);
+        width: 70%;
+        margin: 1vw auto 1vw auto;
+        padding: 12px;
+        transition: background-color .6s ease, transform .6s;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+    </div>
+</body>
+<script>
+
+// var obj;
+
+fetch("./jsons/Chill 2022.json")
+  .then(res => res.json())
+  .then(data => obj = data)
+  .then(() => console.log(obj.tracks[0].album.images[0].url))
+  .then((html) => {
+    $(document).ready(function(){
+	let elem = $("<img src=\"" + obj.tracks[0].album.images[1].url + "\">");
+	$("#container").append(elem);
+    })
+});
+
+
+</script>
+</html>
