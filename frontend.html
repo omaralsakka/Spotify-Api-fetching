@@ -22,11 +22,16 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));   
         }
+        .list{
+            display: block;
+            border: solid 10px black;
+            border-radius: 10px;
+            color: wheat;
+        }
         .track{
             position: relative;
             margin: 5px;
             text-align: center;
-            
             transition: transform .6s;
         }
         .track:hover{
@@ -80,23 +85,37 @@ async function fetchMe(value){
     //   .then(() => console.log(obj.tracks[0].album.images[0].url))
     .then((html) => {
         $(document).ready(function(){
-            
-        $.each(obj.tracks, function(key, val){
+        
+        //for each playlist object we create playlist tag
+        $.each(obj, function(key,val){
+            let playlist;
+            playlist = $('<div class="list"></div>');
+            let list = value.substring(0, value.indexOf(".json"));
+            // console.log(list);
+            list = $('<h1>' + list +'</h1>');
+            $(playlist).append(list);
+
+            //for each tracks in single object, create its elements then add it to the playlist tag
+            $.each(obj.tracks, function(key, val){
             let hrf = val.album.external_urls.spotify;
             let aName = val.album.artists[0].name;
             let tTitle = val.album.name;
             let tYear = val.album.release_date;
-            console.log(val.album);
+            // let list = value.substring(0, value.indexOf(".json"));
             let anchor = $("<a href='"+ hrf + "' target='__blank'></a>");
             let img = $("<img id='artwork' src='" + val.album.images[1].url + "'>");
             let txt = $("<div class='cTxt'>" + aName + "</br>" + tTitle + "</br>" + tYear + "</div>");
             let track = $("<div class='track'></div>")
-            // let elem = $("<a href=\""+ hrf + "\" target=\"__blank\"><p>" + val.album +"</p><img id=artwork src=\"" + val.album.images[1].url + "\"></a>");
             $(anchor).append(img);
             $(anchor).append(txt);
             $(track).append(anchor);
-            $("#container").append(track);
+            $(playlist).append(track);
         })
+        //we append the playlist to the main page container
+        $("#container").append(playlist);
+        })
+
+
         })
     });
 
