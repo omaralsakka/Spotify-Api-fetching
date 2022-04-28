@@ -1,0 +1,134 @@
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+	height: 100%;
+}
+#container {
+	display: inline-flex;
+	justify-content: center;
+}
+.list {
+	display: flex;
+	position: static;
+	width: 80%;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 10px 10px;
+	align-items: center;
+	border: solid 1px green;
+	background-color: rgb(241, 248, 255);
+	box-shadow: 4px 4px 10px white;
+	border-radius: 10px;
+	color: wheat;
+	text-align: center;
+}
+#list_name {
+	width: 90%;
+	margin: 20px auto 40px auto;
+	background: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.track {
+	position: relative;
+	margin: 5px;
+	text-align: center;
+	transition: transform 0.6s;
+}
+.track:hover {
+	transform: scale(1.05);
+}
+.track:hover .cTxt {
+	opacity: 1;
+}
+.track:hover #artwork {
+	filter: brightness(30%);
+}
+.cTxt {
+	display: block;
+	opacity: 0;
+	position: absolute;
+	margin: auto;
+	font-size: 30px;
+	font-family: "Akshar", sans-serif;
+	top: 50%;
+	left: 50%;
+	color: rgb(233, 233, 233);
+	transform: translate(-50%, -50%);
+	transition: opacity 0.6s ease;
+}
+#artwork {
+	border: solid 2px rgb(156, 242, 178);
+	border-radius: 10px;
+	transition: filter 0.6s ease;
+}
+.navbar {
+	display: flex;
+	height: 0;
+	width: 95%;
+	padding: 10px;
+	margin: auto;
+	margin-bottom: 30px;
+	text-align: center;
+	border: solid green 2px;
+	border-radius: 5px;
+	background-color: rgb(241, 248, 255);
+	box-shadow: 1px 1px 10px rgb(216, 214, 214);
+	transition: all .6s ease;
+	opacity: 0;
+}
+.navbar-active {
+	height: 100px;
+	opacity: 1;
+}
+.navItem {
+	margin: 5px;
+	opacity: 0;
+	font-family: "Akshar", sans-serif;
+	border: solid black 1px;
+	border-radius: 10px;
+	padding: 10px;
+	color: #303030;
+	background-color: white;
+	transition: color 0.6s ease, transform 0.6s ease,
+	background-color 0.6s ease;
+}
+.navItem-active{
+	opacity: 1;
+}
+.navItem:hover {
+	background-color: rgba(216, 207, 195, 0.595);
+	color: #427d53;
+	transform: scale(1.05);
+}
+#logo {
+	display: block;
+	position: relative;
+	width: 30%;
+	opacity: 0.4;
+	margin: auto;
+	margin-top: 100px;
+}
+#menu {
+	margin: auto;
+	margin-top: 10px;
+	transition: transform 0.6s ease;
+}
+#menu:hover{
+	transform: scale(1.2);
+}
+#header {
+	display: flex;
+}
+@keyframes gradient {
+	0% {
+	background-position: 0% 50%;
+	}
+	50% {
+	background-position: 100% 50%;
+	}
+	100% {
+	background-position: 0% 50%;
+	}
+}

@@ -17,7 +17,6 @@
 		body += "&redirect_uri=" + redirect_uri;
 		body += "&client_id=" + client_id;
 		body += "&client_secret=" + client_secret;
-	/* 	alert(body); */
 		callAuthorizationApi(body);
 	}
 
@@ -31,10 +30,8 @@
 	}
 
 	function handleAuthorizationResponse() {
-	/* 	alert(this.status + ' : ' + this.responseText); */
 		if ( this.status == 200 ){
 			var data = JSON.parse(this.responseText);
-			// console.log(data);
 			var data = JSON.parse(this.responseText);
 			if ( data.access_token != undefined ){
 				access_token = data.access_token;
@@ -49,7 +46,7 @@
 			}
 		}
 		else {
-			// console.log(this.responseText);
+			console.log(this.responseText);
 			alert(this.responseText);
 		}
 	}
@@ -61,7 +58,6 @@
 			const urlParams = new URLSearchParams(queryString);
 			code = urlParams.get('code');
 		}
-	/* 	alert('Code: ' + code); */
 		return code;
 	}
 
