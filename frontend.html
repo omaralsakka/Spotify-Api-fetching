@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 	crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" 
-	integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+	integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
         }
         #container{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));   
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         }
         .list{
             display: block;
@@ -73,26 +73,25 @@ $.get("files.php", function(data, success){
     items = jQuery.parseJSON(data);
         jQuery.each(items, function(key, value){
         fetchMe(value);
-        
+
     })
 })
-
+var i = 0;
 //function to fetch all the songs from each playlist album
-async function fetchMe(value){ 
+async function fetchMe(value){
     fetch("./jsons/" + value)
     .then(res => res.json())
     .then(data => obj = data)
     //   .then(() => console.log(obj.tracks[0].album.images[0].url))
     .then((html) => {
         $(document).ready(function(){
-        
         //for each playlist object we create playlist tag
         $.each(obj, function(key,val){
             let playlist;
             playlist = $('<div class="list"></div>');
             let list = value.substring(0, value.indexOf(".json"));
             // console.log(list);
-            list = $('<h1>' + list +'</h1>');
+            list = $('<h1 id="list_name" onclick=$(".track' + i + '").toggle()>' + list +'</h1>', {});
             $(playlist).append(list);
 
             //for each tracks in single object, create its elements then add it to the playlist tag
@@ -105,21 +104,22 @@ async function fetchMe(value){
             let anchor = $("<a href='"+ hrf + "' target='__blank'></a>");
             let img = $("<img id='artwork' src='" + val.album.images[1].url + "'>");
             let txt = $("<div class='cTxt'>" + aName + "</br>" + tTitle + "</br>" + tYear + "</div>");
-            let track = $("<div class='track'></div>")
+            let track = $("<div class='track"+ i + "'></div>")
             $(anchor).append(img);
             $(anchor).append(txt);
             $(track).append(anchor);
             $(playlist).append(track);
         })
+		i += 1;
         //we append the playlist to the main page container
         $("#container").append(playlist);
-        })
-
+        });
 
         })
     });
 
 }
+
 
 </script>
 </html>
