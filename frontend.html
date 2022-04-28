@@ -10,19 +10,51 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" 
 	integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" 
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
-    #artwork{
-        display: inline-flex;
-        margin: 5px;
-        border: solid 4px black;
-        border-radius: 10px;
-        transition: opacity .6s ease, transform .6s;
-    }
-    #artwork:hover{
-			transform: scale(1.05);
-			opacity: 0.8;
-		}
+        body{
+            background-color: #303030;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));   
+        }
+        .track{
+            position: relative;
+            margin: 5px;
+            text-align: center;
+            
+            transition: transform .6s;
+        }
+        .track:hover{
+            transform: scale(1.05);
+        }
+        .track:hover .cTxt{
+            opacity: 1.0;
+        }
+        .track:hover #artwork{
+            filter: brightness(30%);
+        }
+        .cTxt{
+            display: block;
+            opacity: 0;
+            position: absolute;
+            font-size: 30px;
+            font-family: 'Akshar', sans-serif;
+            top: 50%;
+            left: 50%;
+            color: rgb(233, 233, 233);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.6s ease;
+        }
+        #artwork{
+            border: solid 2px rgb(255, 255, 255);
+            border-radius: 10px;
+            transition: filter .6s ease;
+        }
     </style>
 </head>
 <body>
@@ -51,9 +83,19 @@ async function fetchMe(value){
             
         $.each(obj.tracks, function(key, val){
             let hrf = val.album.external_urls.spotify;
-            // console.log(obj);
-            let elem = $("<a href=\""+ hrf + "\" target=\"__blank\"><img id=artwork src=\"" + val.album.images[1].url + "\"></a>");
-            $("#container").append(elem);
+            let aName = val.album.artists[0].name;
+            let tTitle = val.album.name;
+            let tYear = val.album.release_date;
+            console.log(val.album);
+            let anchor = $("<a href='"+ hrf + "' target='__blank'></a>");
+            let img = $("<img id='artwork' src='" + val.album.images[1].url + "'>");
+            let txt = $("<div class='cTxt'>" + aName + "</br>" + tTitle + "</br>" + tYear + "</div>");
+            let track = $("<div class='track'></div>")
+            // let elem = $("<a href=\""+ hrf + "\" target=\"__blank\"><p>" + val.album +"</p><img id=artwork src=\"" + val.album.images[1].url + "\"></a>");
+            $(anchor).append(img);
+            $(anchor).append(txt);
+            $(track).append(anchor);
+            $("#container").append(track);
         })
         })
     });
