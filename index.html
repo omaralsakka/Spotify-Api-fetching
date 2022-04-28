@@ -1,16 +1,63 @@
 <html>
 	<head>
 		<title>Rush - Music Collection</title>
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-		<style href='styles.css'></style>
+		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="styles.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<style>
+			.container{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 50%;
+				margin-top: 10%;
+				border: 1px solid black;
+				border-radius: 10px;
+				width: 50%;
+				background-color: #00dade;
+				background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+				text-align: center;
+			}
+			#title_name{
+				width: 100%;
+				font-family: "Akshar", sans-serif;
+				font-size: 100px;
+				margin:auto;
+				margin-bottom: 30px;
+				color: rgba(0, 0, 0, 0.827);
+				opacity: 0.9;
+			}
+			.btn{
+				background-color: #1DB954;
+				width: 20%;
+				font-family: "Akshar", sans-serif;
+				font-size: 20px;
+				color: antiquewhite;
+				padding: 10px;
+				border-radius: 10px;
+				box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.614);
+				transition: transform 0.6s ease, background-color .6s ease, box-shadow .6s ease;
+			}
+			.btn:hover{
+				background-color: #089a3b;
+				box-shadow: 5px 5px 1px rgba(215, 215, 215, 0.561);
+				transform: scale(1.09);
+			}
+			#spoti{
+				opacity: 0.5;
+			}
+		</style>
 	</head>
 	<body>
+		<img
+			id="spoti"
+			src="https://www.freepnglogos.com/uploads/spotify-logo-png/file-spotify-logo-png-4.png"
+			width="200"
+			alt="file spotify logo png"
+		/>
 		<div class="container">
-			<div id="login">
-				<h1>Rush - Music Collection</h1>
-				<a class="btn btn-primary" id="login_btn" style="background-color: #1DB954">Login in with Spotify</a>
-			</div>
+			<h1 id="title_name">Rush - Music Collection</h1>
+			<button class="btn" id="login_btn" >Login in with Spotify</button>
 		</div>
 		<script src='login.js'></script>
 	</body>
