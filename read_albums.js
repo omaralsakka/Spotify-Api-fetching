@@ -1,7 +1,6 @@
 var array = new Array();
 
 items = localStorage.getItem('data');
-console.info(items);
 items = jQuery.parseJSON(items);
 jQuery.each(items, function(key, value){
 	fetchMe(value);
@@ -13,7 +12,6 @@ async function fetchMe(value){
 		let playlist = $('<div class="list" id="list' + i + '"></div>').hide();
 		let navItem;
 		let list = value.album.name;
-		console.log(list);
 		// navItem onclick it will toggle that current list with using the same index
 		navItem = $("<div class='navItem' onclick=$('#list"+ i +"').toggle(200,'linear')>" + list + "</div>");
 		list = $('<h1 id="list_name"> <a href="'+ value.album.external_urls.spotify + '">' + list +'</a></h1>');
