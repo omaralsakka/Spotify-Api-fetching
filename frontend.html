@@ -60,9 +60,31 @@
             border-radius: 10px;
             transition: filter .6s ease;
         }
+        #navbar{
+            display: flex;
+            width: 95%;
+            margin: auto;
+            margin-bottom: 30px;
+            text-align: center;
+            border: solid green 2px;
+            border-radius: 5px;
+            background-color: aliceblue;
+            box-shadow: 8px 8px 1px black;
+        }
+        .navItem{
+            margin: 5px;
+            font-family: 'Akshar', sans-serif;
+            color: #303030;
+            transition: color 0.6s ease, transform .6s ease;
+        }
+        .navItem:hover{
+            color:#427d53;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
+    <div id="navbar"></div>
     <div id="container">
     </div>
 </body>
@@ -82,18 +104,20 @@ async function fetchMe(value){
     fetch("./jsons/" + value)
     .then(res => res.json())
     .then(data => obj = data)
-    //   .then(() => console.log(obj.tracks[0].album.images[0].url))
+
     .then((html) => {
         $(document).ready(function(){
         //for each playlist object we create playlist tag
         $.each(obj, function(key,val){
             let playlist;
+            let navItem;
             playlist = $('<div class="list"></div>');
             let list = value.substring(0, value.indexOf(".json"));
+            navItem = $("<div class='navItem'>" + list + "</div>");
             // console.log(list);
             list = $('<h1 id="list_name" onclick=$(".track' + i + '").toggle()>' + list +'</h1>', {});
             $(playlist).append(list);
-
+            $("#navbar").append(navItem);
             //for each tracks in single object, create its elements then add it to the playlist tag
             $.each(obj.tracks, function(key, val){
             let hrf = val.album.external_urls.spotify;
