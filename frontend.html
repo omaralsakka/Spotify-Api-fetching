@@ -111,11 +111,12 @@ async function fetchMe(value){
         $.each(obj, function(key,val){
             let playlist;
             let navItem;
-            playlist = $('<div class="list"></div>');
+			// Every list haves now id value.
+            playlist = $('<div class="list" id="list' + i + '"></div>').hide();
             let list = value.substring(0, value.indexOf(".json"));
-            navItem = $("<div class='navItem'>" + list + "</div>");
-            // console.log(list);
-            list = $('<h1 id="list_name" onclick=$(".track' + i + '").toggle()>' + list +'</h1>', {});
+			// navItem onclick it will toggle that current list with using the same index
+            navItem = $("<div class='navItem' onclick=$('#list"+ i +"').toggle()>" + list + "</div>");
+            list = $('<h1 id="list_name" onclick=$("#track' + i + '").toggle()>' + list +'</h1>', {});
             $(playlist).append(list);
             $("#navbar").append(navItem);
             //for each tracks in single object, create its elements then add it to the playlist tag
@@ -128,7 +129,8 @@ async function fetchMe(value){
             let anchor = $("<a href='"+ hrf + "' target='__blank'></a>");
             let img = $("<img id='artwork' src='" + val.album.images[1].url + "'>");
             let txt = $("<div class='cTxt'>" + aName + "</br>" + tTitle + "</br>" + tYear + "</div>");
-            let track = $("<div class='track"+ i + "'></div>")
+			// fixed tracks so styling is there.
+            let track = $("<div class='track' id='track"+ i + "'></div>")
             $(anchor).append(img);
             $(anchor).append(txt);
             $(track).append(anchor);
