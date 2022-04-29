@@ -1,5 +1,3 @@
-var array = new Array();
-
 items = localStorage.getItem('data');
 items = jQuery.parseJSON(items);
 jQuery.each(items, function(key, value){
@@ -12,11 +10,13 @@ async function fetchMe(value){
 		let playlist = $('<div class="list" id="list' + i + '"></div>').hide();
 		let navItem;
 		let list = value.album.name;
+		
 		// navItem onclick it will toggle that current list with using the same index
 		navItem = $("<div class='navItem' onclick=$('#list"+ i +"').toggle(200,'linear')>" + list + "</div>");
 		list = $('<h1 id="list_name"> <a href="'+ value.album.external_urls.spotify + '">' + list +'</a></h1>');
 		$(playlist).append(list);
 		$(".navbar").append(navItem);
+		
 		//for each tracks in single object, create its elements then add it to the playlist tag
 		$.each(value.album.tracks.items, function(key, val){
 			let hrf = val.external_urls.spotify;

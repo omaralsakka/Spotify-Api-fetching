@@ -1,6 +1,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 
+// to fetch user token
 	function getToken() {
 		let code = null;
 		const queryString = window.location.search;
@@ -12,8 +13,9 @@
 	}
 
 	const token = getToken();
-	var dir = './jsons';
 
+	// getting the user data in ajax method and storing it into the local storage
+// of the browser
 	function getMyData() {
 		$.ajax(
 		{
