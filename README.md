@@ -10,6 +10,10 @@ Rushes Music Collection/Hive Helsinki      <img src="https://user-images.githubu
 This project is about using the API of a popular music streaming service
 to print out a catalog of a user's saved albums. In our case we used Spotify.
 
+## :play_or_pause_button: **App Preview:**
+
+<img src="Running_App.gif"/>
+
 ## :arrow_forward: **Usage**
 
 :arrow_right: create an application inside Spotify developer page
