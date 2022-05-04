@@ -12,7 +12,7 @@ to print out a catalog of a user's saved albums. In our case we used Spotify.
 
 ## :play_or_pause_button: **App Preview:**
 
-<img src="Running_App.gif"/>
+<img src="media/Running_App.gif" alt="App Preview gif"/>
 
 ## :arrow_forward: **Usage**
 
